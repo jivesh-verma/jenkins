@@ -7,7 +7,7 @@ pipeline {
     stages{
         stage('Build and tag image') {
             steps {
-                sh 'docker build -t nano Dockerfile'
+                sh 'docker build -t nano .'
             }
         }  
     }
