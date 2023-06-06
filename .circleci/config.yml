@@ -9,3 +9,14 @@ jobs:
           name: SSH into EC2
           command: |
             ssh -i $SSH_KEY -p $SSH_PORT $SSH_USER@$SSH_HOST
+workflows:
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: circleci-project-setup
+
