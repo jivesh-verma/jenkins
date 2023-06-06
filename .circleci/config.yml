@@ -1,6 +1,12 @@
 version: 2.1
 jobs:
   build:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Placeholder Build Step
+          command: echo "Running the build job"
   deploy:
     machine:
       enabled: true
