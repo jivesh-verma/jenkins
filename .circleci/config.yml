@@ -1,14 +1,12 @@
-workflows:
-  version: 2
-  your_workflow:
-    jobs:
-  ssh_to_ec2:
-    docker:
-      - image: circleci/python:3.9  # Choose an appropriate Docker image for your use case
-    steps:
-      - checkout 
-       
-      - run:
+version: 2.1
+jobs:
+    build:
+    deploy:
+    machine:
+        enabled: true
+    steps:          
+        - run:
           name: SSH into EC2
-          command: ssh -i $SSH_KEY -p $SSH_PORT $SSH_USER@$SSH_HOST
+          command: |
+          ssh -i $SSH_KEY -p $SSH_PORT $SSH_USER@$SSH_HOST
 
