@@ -6,7 +6,12 @@ workflows:
     docker:
       - image: circleci/python:3.9  # Choose an appropriate Docker image for your use case
     steps:
-      
+      - setup_remote_docker:  # If you need Docker within your EC2 instance
+          version: 20.10.8  # Adjust the version if needed
+      - add_ssh_keys:
+          fingerprints:
+            - "YOUR_SSH_KEY_FINGERPRINT"  # Replace with the fingerprint of the SSH key in CircleCI
       - run:
           name: SSH into EC2
           command: ssh -i $SSH_KEY -p $SSH_PORT $SSH_USER@$SSH_HOST
+
